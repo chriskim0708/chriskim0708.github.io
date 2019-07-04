@@ -1,5 +1,5 @@
 ---
-layout: posts
+layout: post
 title:  "DOCTYPE이란?"
 date:   2019-06-26 13:37:23 +0900
 categories: Html

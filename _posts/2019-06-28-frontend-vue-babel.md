@@ -1,5 +1,5 @@
 ---
-layout: posts
+layout: post
 title:  "트랜스파일러(Transpiler) Babel의 기능"
 date:   2019-06-28 14:30:00 +0900
 categories: Vuejs

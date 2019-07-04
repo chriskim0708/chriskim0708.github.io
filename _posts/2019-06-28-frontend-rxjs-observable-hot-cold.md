@@ -1,5 +1,5 @@
 ---
-layout: posts
+layout: post
 title:  "Observable Hot, Cold의 구분"
 date:   2019-06-28 12:06:00 +0900
 categories: Rxjs

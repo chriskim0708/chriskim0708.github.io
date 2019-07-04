@@ -1,14 +1,14 @@
-title:              Clean Blog
-email:              your-email@example.com
-description:        A Blog Theme by Start Bootstrap
-author:             Start Bootstrap
+title:              Chris의 개발자 블로그
+email:              last1224@gmail.com
+description:        Frontend Developer Chris Kim Blog
+author:             Chris Kim
 baseurl:            "/"
-url:                "https://blackrockdigital.github.io"
+url:                "https://chriskim0708.github.io"
 
 # Social Profiles
-twitter_username:   SBootstrap
-github_username:    BlackrockDigital
-facebook_username:  StartBootstrap
+twitter_username:   
+github_username:    chriskim0708
+facebook_username:  
 linkedin_username:
 
 # Add your google-analytics ID here to activate google analytics
@@ -16,6 +16,7 @@ google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
 
 # Build settings
 markdown:           kramdown
+highlighter:        rouge
 paginate:           5
 paginate_path:      "/posts/page:num/"
 plugins:
