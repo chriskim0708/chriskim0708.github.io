@@ -149,7 +149,7 @@ const observer$ = interval(1000).pipe(
 const subscriber1 = observer1$.subscribe(v => console.log(v)); // 0, 1, 2, 3 ~~~~
 setTimeout(() => {
   const subscriber2 = observer2$.subscribe(v => console.log(v));
-}, 10000) // 10초 뒤에 0, 1, 2, 3 ~~~~
+}, 10000) // 10초 뒤에 10, 11, 12, 13 ~~~~
 {% endhighlight %}
 
 pipe에 share를 선언한 것만으로 interval 연산자가 Hot Observable 구조로 바뀌게 되었다.
