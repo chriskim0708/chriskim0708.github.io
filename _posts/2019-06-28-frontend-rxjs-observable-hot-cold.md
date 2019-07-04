@@ -41,8 +41,9 @@ const observer2$ = interval(1000);
 {% highlight ts %}
 const subscriber1 = observer1$.subscribe(v => console.log(v)); // 0, 1, 2, 3 ~~~~
 setTimeout(() => {
-  const subscriber2 = observer2$.subscribe(v => console.log(v));
-}, 10000) // 10초 뒤에 0, 1, 2, 3 ~~~~
+  const subscriber2 = observer1$.subscribe(v => console.log(v)); // 10초 뒤에 0, 1, 2, 3 ~~~~
+  const subscriber3 = observer2$.subscribe(v => console.log(v)); // 10초 뒤에 0, 1, 2, 3 ~~~~
+}, 10000)
 {% endhighlight %}
 
 이때부터는 별다른 작업 없이 관찰 대상으로부터 데이터를 읽어들이는 게 가능해진다.
@@ -91,11 +92,14 @@ const obs$ = new Observable((observer) => {
   observer.next(time);
 })
 setTimeout(() => {
-  const subscriber = obs$.subscribe(v => console.log(v));
+  const subscriber1 = obs$.subscribe(v => console.log(v));
+}, 5000) // 5
+setTimeout(() => {
+  const subscriber2 = obs$.subscribe(v => console.log(v));
 }, 10000) // 10
 {% endhighlight %}
 
-0부터 1초마다 1이 더해지는 interval 구조에서 10초 뒤에 구독을 했기 때문에 10이 찍히게 된다.
+0부터 1초마다 1이 더해지는 interval 구조에서 각각 5초, 10초마다 구독을 요청했기에 구독자1에게는 5, 구독자2에게는 10이 찍히게 된다.
 말 그대로 subscribe하는 시점에서 데이터가 갱신되는 것이 아닌 흘러가는 데이터를 중간부터 참조하게 된다는 의미이다.
 
 이것이 생성자를 내부부터 생성하여 subscribe 시점부터 갱신되어 데이터 스트림을 반환하는 Cold Observable과 가장 큰 차이점이다.
@@ -128,9 +132,9 @@ interval 연산자를 활용한 Observable은 기본적으로 Cold Observable이
 {% highlight ts %}
 const observer$ = interval(1000);
 
-const subscriber1 = observer1$.subscribe(v => console.log(v)); // 0, 1, 2, 3 ~~~~
+const subscriber1 = observer$.subscribe(v => console.log(v)); // 0, 1, 2, 3 ~~~~
 setTimeout(() => {
-  const subscriber2 = observer2$.subscribe(v => console.log(v));
+  const subscriber2 = observer$.subscribe(v => console.log(v));
 }, 10000) // 10초 뒤에 0, 1, 2, 3 ~~~~
 {% endhighlight %}
 
@@ -146,9 +150,9 @@ const observer$ = interval(1000).pipe(
   share()
 );
 
-const subscriber1 = observer1$.subscribe(v => console.log(v)); // 0, 1, 2, 3 ~~~~
+const subscriber1 = observer$.subscribe(v => console.log(v)); // 0, 1, 2, 3 ~~~~
 setTimeout(() => {
-  const subscriber2 = observer2$.subscribe(v => console.log(v));
+  const subscriber2 = observer$.subscribe(v => console.log(v));
 }, 10000) // 10초 뒤에 10, 11, 12, 13 ~~~~
 {% endhighlight %}
 
