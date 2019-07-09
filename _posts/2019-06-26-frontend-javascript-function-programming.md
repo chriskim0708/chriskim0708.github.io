@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "함수형 프로그래밍"
+title:  "자바스크립트 함수형 프로그래밍"
 date:   2019-06-26 13:37:30 +0900
 categories: Javascript
 background: '/img/bg-post.jpg'

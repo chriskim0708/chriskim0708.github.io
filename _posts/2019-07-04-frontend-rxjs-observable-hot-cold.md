@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Observable Hot, Cold의 구분"
-date:   2019-06-28 12:06:00 +0900
+title:  "RXJS Cold Observable, Hot Observable"
+date:   2019-07-04 12:06:00 +0900
 categories: Rxjs
 background: '/img/bg-post.jpg'
 ---
