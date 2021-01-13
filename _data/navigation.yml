@@ -5,5 +5,34 @@ main:
     url: /categories/
   - title: "Tags"
     url: /tags/
-  - title: "About"
-    url: /about/
+
+docs:
+  - title: Categories
+    url: /categories/
+    children:
+      - title: "Javascript"
+        url: /categories/#javascript
+      - title: "Vuejs"
+        url: /categories/#vuejs
+      - title: "Nuxtjs"
+        url: /categories/#nuxtjs
+      - title: "Graphql"
+        url: /categories/#graphql
+      - title: "Nodejs"
+        url: /categories/#nodejs
+      - title: "Mysql"
+        url: /categories/#mysql
+      - title: "Library"
+        url: /categories/#library
+      - title: "Configuration"
+        url: /categories/#configuration
+      - title: "Docker"
+        url: /categories/#docker
+      - title: "Linux"
+        url: /categories/#linux
+      - title: "Git"
+        url: /categories/#git
+      - title: "Html"
+        url: /categories/#Html
+      - title: "Css"
+        url: /categories/#css
