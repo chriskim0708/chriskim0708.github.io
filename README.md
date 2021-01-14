@@ -1,27 +1,53 @@
-# Minimal Mistakes remote theme starter
+## Install Guide for MacOS
+1. command line tool이 미설치시 실행
+```
+xcode-select --install
+```
+2. Homebrew 미설치시 실행
+```
+# Install Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+3. Ruby 설치
+```
+brew install ruby
+```
+4. 터미널 환경변수 설정
+```
+# 사용하는 shell 확인
+echo $SHELL
 
-Click [**Use this template**](https://github.com/mmistakes/mm-github-pages-starter/generate) button above for the quickest method of getting started with the [Minimal Mistakes Jekyll theme](https://github.com/mmistakes/minimal-mistakes).
+# If you're using Zsh
+echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.zshrc
 
-Contains basic configuration to get you a site with:
+# If you're using Bash
+echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.bash_profile
+```
+5. Ruby가 정상적으로 설치됐는지 확인
+```
+which ruby
+# /usr/local/opt/ruby/bin/ruby
 
-- Sample posts.
-- Sample top navigation.
-- Sample author sidebar with social links.
-- Sample footer links.
-- Paginated home page.
-- Archive pages for posts grouped by year, category, and tag.
-- Sample about page.
-- Sample 404 page.
-- Site wide search.
+ruby -v
+ruby 2.7.2p137 (2020-10-01 revision 5445e04352)
+# 버전은 다를 수 있음
+```
+6. jekyll install
+```
+gem install --user-install bundler jekyll
+```
+7. jekyll 터미널 환경변수 설정
+```
+# ruby 버전을 우선 확인
+ruby -v
 
-Replace sample content with your own and [configure as necessary](https://mmistakes.github.io/minimal-mistakes/docs/configuration/).
+# X.X.0 위치에 ruby 버전을 입력하여 환경변수 설정
+# If you're using Zsh
+echo 'export PATH="$HOME/.gem/ruby/X.X.0/bin:$PATH"' >> ~/.zshrc
 
----
-
-## Troubleshooting
-
-If you have a question about using Jekyll, start a discussion on the [Jekyll Forum](https://talk.jekyllrb.com/) or [StackOverflow](https://stackoverflow.com/questions/tagged/jekyll). Other resources:
-
-- [Ruby 101](https://jekyllrb.com/docs/ruby-101/)
-- [Setting up a Jekyll site with GitHub Pages](https://jekyllrb.com/docs/github-pages/)
-- [Configuring GitHub Metadata](https://github.com/jekyll/github-metadata/blob/master/docs/configuration.md#configuration) to work properly when developing locally and avoid `No GitHub API authentication could be found. Some fields may be missing or have incorrect data.` warnings.
+# If you're using Bash
+echo 'export PATH="$HOME/.gem/ruby/X.X.0/bin:$PATH"' >> ~/.bash_profile
+```
+8. 프로젝트 root 폴더에서 install 및 build 실행
+  - Install the theme: `bundle install`
+  - Build your site: `bundle exec jekyll serve`
