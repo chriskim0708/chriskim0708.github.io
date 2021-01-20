@@ -23,6 +23,10 @@ Nuxt를 활용하여 프로젝트를 개발하던 중 백엔드를 직접 구현
 Vue3에서는 [Composition API](https://v3.vuejs.org/guide/composition-api-introduction.html#setup-component-option)를 활용한 문법이 추가되었고 Nuxt에서는 해당 문법을 지원하기 위해
 `@nuxtjs/composition-api` 모듈을 설치하면 된다.
 
+```
+npm i @nuxtjs/composition-api
+```
+
 즉, 지금 작성하는 포스트는 Nuxtjs에 Vue3 기반의 Composition API를 활용한 예제이므로 참고 바란다.
 
 # **Express 서버 구현**
@@ -31,6 +35,10 @@ Vue3에서는 [Composition API](https://v3.vuejs.org/guide/composition-api-intro
 다른 기능(파일 업로드나 타 서비스 연동 등)은 Router API 구현 방식으로 구현하는데 목적이 있다.
 
 우선 Express 서버 구현부터 진행한다.
+
+```
+npm i express
+```
 
 `/server/api/index.ts`
 ```js
@@ -68,4 +76,65 @@ modules: [
 
 여기까지 완료했다면 `/api` 경로를 통해 Express에서 작성한 API를 활용하기 위한 기본 작업을 했다고 보면 된다.
 
-다음 포스트를 통해 express에서 mongodb와 mongoose를 설정하는 법을 설명하도록 하겠다.
+# **Mongoose 설정**
+Mongoose는 MongoDB ODM 중 가장 인기있는 ODM이다.
+Express와 MongDB의 연결은 Mongoose를 활용하여 진행하였다.
+
+```
+npm i mongoose
+```
+
+당연히 이전 스텝으로 자신의 로컬 PC에 MongoDB를 설치하는 절차를 선행해야한다.
+
+mongoose와 MongoDB가 설치 완료되었다면 Express 서버를 통해 DB 커넥션을 해준다.
+
+`/server/api/index.ts`
+```js
+import path from 'path'
+import express from 'express'
+
+const app = express()
+
+mongoose.connect(`mongodb://localhost:27017/${process.env.MONGODB_DATABASE}`, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: true,
+  useCreateIndex: true,
+}, (err) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(`Succeeded in connecting to database`);
+  }
+})
+
+export default {
+  path: '/api',
+  handler: app,
+}
+```
+# **MongoDB Schema Model 생성**
+MongoDB 스키마를 생성해준다.
+스키마에 대한 자세한 설명은 이 포스트에서는 다루지 않겠다.
+
+`/server/models/users.ts`
+```js
+import mongoose from 'mongoose'
+const { Schema } = mongoose
+
+const UserSchema = new Schema({
+  id: String,
+  name: String,
+  age: Number,
+  email: String,
+})
+
+export default mongoose.model('User', UserSchema)
+```
+
+스키마 타입은 유의할 부분이 mongoose에서는 숫자형이 Number, 이후 다룰 gql에서는 숫자형이 Int라는 점이다.
+스키마는 mongoose를 활용한 CRUD에서도 필요하지만 gql과 mongoose의 연결에서도 필요하다.
+
+여기까지 진행했다면 express를 통해 MongoDB를 연결하고 데이터를 CRUD 할 수 있는 환경까지 만들어졌다.
+
+이젠 GraphQL 설정만 진행하면 된다.
