@@ -16,6 +16,8 @@ docs:
         url: /categories/#vuejs
       - title: "Nuxtjs"
         url: /categories/#nuxtjs
+      - title: "React"
+        url: /categories/#react
       - title: "Graphql"
         url: /categories/#graphql
       - title: "Nodejs"
