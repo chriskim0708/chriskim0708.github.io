@@ -24,6 +24,8 @@ docs:
         url: /categories/#nodejs
       - title: "Mysql"
         url: /categories/#mysql
+      - title: "MongoDB"
+        url: /categories/#mysql
       - title: "Library"
         url: /categories/#library
       - title: "Configuration"
