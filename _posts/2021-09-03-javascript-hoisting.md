@@ -35,3 +35,60 @@ var a = 1;
 물론 모든 변수가 undefined를 반환하는 것은 아닙니다.
 
 var, let, const는 호이스팅이 다르게 동작되지만 그 부분은 별도의 포스트로 정리하겠습니다.
+
+## 함수 호이스팅
+
+함수는 `function`으로 선언하는 선언식과 `const` 변수에 포함하는 표현식이 있습니다.
+
+어떻게 방식을 사용하느냐에 따라 호이스팅이 달라집니다.
+
+### 함수 선언식
+
+`function`으로 선언된 함수는 현재 스코프 내에서 가장 위로 호이스팅 됩니다.
+
+```js
+hello(); // "Hello World!"
+function hello() {
+  console.log("Hello World!");
+}
+```
+
+undefined로 초기화되어 호이스팅 되는 `var` 변수와도 동작이 다르다는 것을 알 수 있습니다.
+
+현재 스코프 내 최상위로 호이스팅 되는 부분을 검증해보겠습니다.
+
+```js
+hello(); // "Hello World!"
+innerHello(); // innerHello is not defined
+function hello() {
+  console.log("Hello World!");
+  innerHello(); // "Hello World! - Inner"
+  function innerHello() {
+    console.log("Hello World! - Inner");
+  }
+}
+```
+
+함수 내부에 선언된 innerHello 함수가 전역 스코프로 호이스팅 됐다면 정상적으로 실행됐겠지만,
+is not defined 에러를 반환합니다.
+
+하지만, hello 함수 내에서 함수 선언식보다 먼저 호출을 해도 정상적으로 console.log을 반환하게 됩니다.
+
+현재 스코프 내에서 최상위로 호이스팅 됐다는 것을 알 수 있습니다.
+
+스코프에 대해서는 별도의 포스팅으로 더 자세히 다루도록 하겠습니다.
+
+### 함수 표현식
+
+const에 선언된 표현식 함수의 경우에는 현재 스코프의 가장 위로 호이스팅 되지 않고,
+const 변수의 일반적인 특징을 그대로 따라가게 됩니다.
+
+```js
+a(); // Uncaught ReferenceError: Cannot access 'a' before initialization
+const a = function () {
+  console.log("Hello World!");
+};
+```
+
+let, const의 경우에는 변수 초기화 전에는 access 할 수 없는 상태로 호이스팅 되기 때문에
+Reference 에러를 반환합니다.
