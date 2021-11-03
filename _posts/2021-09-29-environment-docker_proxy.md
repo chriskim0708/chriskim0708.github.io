@@ -1,7 +1,7 @@
 ---
 title: "Docker+Nginx를 활용한 Application Proxy 구조"
 date: 2021-09-29 09:00:00 +0900
-categories: Docker
+categories: Environment
 ---
 
 기존에 도커를 활용하지 않던 서비스의 서버를 이관해야하는 상황이 생겨서 기회삼아 도커를 활용한 Proxy 구조를 구축하기로 하고 시도를 해보았습니다.

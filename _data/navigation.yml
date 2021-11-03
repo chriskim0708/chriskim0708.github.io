@@ -3,10 +3,10 @@ main:
   #   url: /posts/
   - title: "Javascript"
     url: /categories/javascript
-  - title: "Vue"
-    url: /categories/vue
   - title: "React"
     url: /categories/react
+  - title: "Environment"
+    url: /categories/environment
 
 docs:
   - title: Javascript
