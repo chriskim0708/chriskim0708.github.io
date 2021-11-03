@@ -1,12 +1,10 @@
 ---
 title: "Docker 설치하기"
 date: 2021-09-29 08:00:00 +0900
-categories: Environment
+categories: 개발환경
 ---
 
-## Docker 설치
-
-가장 간단한 방법으로 curl이 설치되어있다는 가정 하에 아래와 같은 명령어를 사용해주시면 된다.
+도커 설치는 가장 간단한 방법으로 curl이 설치되어있다는 가정 하에 아래와 같은 명령어를 사용해주시면 된다.
 
 ```
 curl -fsSL https://get.docker.com/ | sudo sh

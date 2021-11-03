@@ -1,10 +1,8 @@
 ---
 title: "자바스크립트 변수(Variable)"
 date: 2021-09-01 11:00:02 +0900
-categories: Javascript
+categories: 자바스크립트
 ---
-
-# var, let, const
 
 자바스크립트에서 변수를 선언하는 키워드는 var, let, const가 있다.
 

@@ -1,13 +1,13 @@
 ---
 title: "Docker+Nginx를 활용한 Application Proxy 구조"
 date: 2021-09-29 09:00:00 +0900
-categories: Environment
+categories: 개발환경
 ---
 
 기존에 도커를 활용하지 않던 서비스의 서버를 이관해야하는 상황이 생겨서 기회삼아 도커를 활용한 Proxy 구조를 구축하기로 하고 시도를 해보았습니다.
 복잡한 과정은 제외하고 간단히 어떤 방식으로 Docker와 서비스 간의 Proxy 구조를 구축했는지 정리하고자 합니다.
 
-[이전 Docker Install 포스팅]({{ site.baseurl}}{% link _posts/2021-09-29-environment-docker_install.md %})을 통해서 도커와 docker-compose를
+[이전 Docker Install 포스팅]({{ site.baseurl}}{% link _posts/2021-09-29-devops-docker_install.md %})을 통해서 도커와 docker-compose를
 설치하는 방법은 이미 설명했습니다.
 
 때문에 docker, docker-compose가 설치 되어있다는 가정 하에 작성하는 포스팅이니 참고 바랍니다.

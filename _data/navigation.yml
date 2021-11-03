@@ -1,12 +1,16 @@
 main:
   # - title: "Posts"
   #   url: /posts/
-  - title: "Javascript"
-    url: /categories/javascript
-  - title: "React"
-    url: /categories/react
-  - title: "Environment"
-    url: /categories/environment
+  - title: "자바스크립트"
+    url: /categories/#javascript
+  - title: "프론트엔드"
+    url: /categories/#frontend
+  - title: "개발환경"
+    url: /categories/#devops
+  - title: "서버"
+    url: /categories/#server
+  - title: "잡지식"
+    url: /categories/#etc
 
 docs:
   - title: Javascript

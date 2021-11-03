@@ -1,9 +1,7 @@
 ---
-title: 'GIT: gitlab-runner create .env file'
+title: "NuxtJS: SSR 렌더링에서 Client 영역 접근 문제"
 date: 2021-04-05 15:25:00 +0900
-categories: Git
-tags:
-  - nuxtjs
+categories: 프론트엔드
 ---
 
 최근에 진행한 프로젝트 중 기존의 vue 프로젝트에 pages 컴포넌트를 하나 만들고
@@ -20,7 +18,7 @@ jwt를 전달을 해주는 것이다.
 ## POST MESSAGE
 
 ```js
-window.addEventListener('message', receiveMessage)
+window.addEventListener("message", receiveMessage);
 ```
 
 이렇게 작성하면 일단은 메세지를 `받을 수 있는` 상태까지는 가능하다.
@@ -32,14 +30,17 @@ window.addEventListener('message', receiveMessage)
 ```js
 function receiveMessage(event: any) {
   if (event.origin !== `iframe location origin`) {
-    return
+    return;
   }
 
-  const message = event && event.data && event.data.request
-  
-  event.source.postMessage({
-    jwt: window.localStorage.getItem('jwt'),
-  }, `iframe location origin`)
+  const message = event && event.data && event.data.request;
+
+  event.source.postMessage(
+    {
+      jwt: window.localStorage.getItem("jwt")
+    },
+    `iframe location origin`
+  );
 }
 ```
 
@@ -57,13 +58,13 @@ event.source는 나에게 요청이 들어온 대상의 window를 의미한다.
 ```js
 function receiveMessage(event) {
   if (event.origin !== `parent location origin`) {
-    return
+    return;
   }
 
-  const { jwt } = event.data
+  const { jwt } = event.data;
 
   if (jwt && level) {
-    window.localStorage.setItem('jwt', jwt)
+    window.localStorage.setItem("jwt", jwt);
   }
 }
 ```
